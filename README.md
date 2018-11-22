@@ -2,19 +2,16 @@
 
 This project belongs to the course of **Security in Computer Systems**, which is part of the 3rd semester of MSc in Robot Systems, University of Southern Denmark.
 
-#### Project Ideas
+To see the detailed report of the project, go to the repo's [Wiki](https://github.com/CVH95/Havana/wiki).
 
- - [DoS attack](https://www.guru99.com/ultimate-guide-to-dos-attacks.html) into a RPi server (with Kali Linux?).
- - [DoS attack with Metasploit](https://gbhackers.com/kali-linux-tutorial-dos-attack/) in Kali Linux.
- - [Credentials Harvester Attack](https://www.guru99.com/ultimate-guide-to-dos-attacks.html) with Kali Linux.
- - [BeEF](https://null-byte.wonderhowto.com/how-to/hack-like-pro-get-facebook-credentials-without-hacking-facebook-0170321/) Facebook attack.
- - Top 25 Kali Linux [tools](https://linuxhint.com/top-25-best-kali-linux-tools/).
- - Kali Linux Wireless [attacks](https://www.tutorialspoint.com/kali_linux/kali_linux_wireless_attacks.htm).
- - [Man in the Middle](https://ourcodeworld.com/articles/read/422/how-to-perform-a-man-in-the-middle-mitm-attack-with-kali-linux) attack using Kali Linux.
+## Project Description.
 
-## 1. Project Description.
+The project consists on doing penetration testing in a REST server that controls the activity of a production workcell.  The server that it is going to be used is a version of the one provided in the course _”Robot System Design”_. It is a REST server connected to a SQL database, which stores the production orders and data generated while monitoring the state of the workcell at each moment. It will be set up in a Raspberry Pi in order to attack it remotely. Some examples of what things can be tried out are:
 
-## 2. Authors.
+ - Denial of Service attacks: Interrupting the work flow.
+ - Injection: Modifying and introducing erroneous data to disrupt the production.
+
+## Authors
 
 Carlos Viescas Huerta.
 
