@@ -37,19 +37,19 @@ def die(secs):
     time.sleep(secs)
 
 # Get ticket from database
-def get_ticket(_id):
+def get_ticket(_id, hoost):
     # Connect to database
-    conn = pymysql.connect(host='localhost',
-                           user='rsd',
-                           password='rsd2018',
-                           db='rsd2018',
+    conn = pymysql.connect(host=hoost,
+                           user='scs',
+                           password='scs2018',
+                           db='scs2018',
                            charset='utf8',
                            cursorclass=pymysql.cursors.DictCursor)
     
     try:
         with conn.cursor() as cursor:
             # Select ticket 
-            select_stmt = "select id, ticket from rsd2018.jobs where id = %s"
+            select_stmt = "select id, ticket from scs2018.jobs where id = %s"
             cursor.execute(select_stmt, _id)
             result = cursor.fetchone()
     finally:

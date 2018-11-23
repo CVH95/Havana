@@ -5,9 +5,12 @@ import uuid
 import threading
 import time
 import random
+import sys
 
 mysql = MySQL()
 
+_ip_adrr = str(sys.argv)
+print "Server's IP address: " + _ip_adrr
 
 class FlaskApp(Flask):
     def __init__(self, *args, **kwargs):
@@ -26,7 +29,7 @@ class FlaskApp(Flask):
 
                 try:
                     print("  ")
-                    cur.execute('''select * from rsd2018.jobs''')
+                    cur.execute('''select * from scs2018.jobs''')
                     num = cur.rowcount
                 except Exception as e:
                     err_str = "Problem accesing sql: " + str(e)
@@ -47,7 +50,7 @@ class FlaskApp(Flask):
                         params[0] = 1   # add one red and blue
                         params[1] = 1
 
-                    insert_stmt = ("INSERT INTO rsd2018.jobs (time, red, blue, yellow, status) "
+                    insert_stmt = ("INSERT INTO scs2018.jobs (time, red, blue, yellow, status) "
                                    "VALUES (CURRENT_TIMESTAMP, %s, %s, %s, 1)"
                                    )
 
@@ -125,7 +128,7 @@ def not_found(error):
 @app.route('/')
 def get_log():
     cur = mysql.connect().cursor()
-    cur.execute('''select * from rsd2018.log''')
+    cur.execute('''select * from scs2018.log''')
     r = [dict((cur.description[i][0], value)
               for i, value in enumerate(row)) for row in cur.fetchall()]
 
@@ -168,7 +171,7 @@ def postlog_entry():
         EventTypes.index(event_str)
     )
 
-    insert_stmt = ("INSERT INTO rsd2018.log (time, cell_id, comment, event) "
+    insert_stmt = ("INSERT INTO scs2018.log (time, cell_id, comment, event) "
                    "VALUES (CURRENT_TIMESTAMP, %s, %s, %s)"
                    )
 
@@ -195,7 +198,7 @@ def get_event_types():
 def get_orders():
     r = []
     cur = mysql.connect().cursor()
-    cur.execute('''select id, blue, red, yellow, status from rsd2018.jobs''')
+    cur.execute('''select id, blue, red, yellow, status from scs2018.jobs''')
     for row in cur.fetchall():
         print(row)
         r.append({'id':row[0], 'blue':row[1], 'red':row[2], 'yellow':row[3], 'status':StatusText[row[4]]})
@@ -209,7 +212,7 @@ def get_order(order_id):
     r = []
     params = (order_id)
     cur = mysql.connect().cursor()
-    cur.execute(("select id, blue, red, yellow, status from rsd2018.jobs where id = %s"),params)
+    cur.execute(("select id, blue, red, yellow, status from scs2018.jobs where id = %s"),params)
     row = cur.fetchone()
     r.append({'id':row[0], 'blue':row[1], 'red':row[2], 'yellow':row[3], 'status':StatusText[row[4]]})
     return jsonify({'order': r})
@@ -217,7 +220,7 @@ def get_order(order_id):
 @app.route('/orders/<int:order_id>', methods=['PUT'])
 def update_order(order_id):
     params = (order_id)
-    select_stmt = ("select id, status from rsd2018.jobs where id = %s")
+    select_stmt = ("select id, status from scs2018.jobs where id = %s")
 
     con = mysql.connect()
     cur = con.cursor()
@@ -233,7 +236,7 @@ def update_order(order_id):
     if cur.fetchall()[0][1] == 2: # check if the job is already taken
         raise InvalidUsage('Order is taken and not ready', status_code=400)
 
-    update_stmt = ("update rsd2018.jobs set status = 2 where id = %s")
+    update_stmt = ("update scs2018.jobs set status = 2 where id = %s")
 
     try:
         cur.execute(update_stmt, params)
@@ -245,7 +248,7 @@ def update_order(order_id):
     # now generate the ticket, and insert it into the db
     ticket = uuid.uuid4().hex.upper()[0:6]
     print ("Order " + str(order_id) + "ticket: " + str(ticket))
-    ticket_update_stmt = ("update rsd2018.jobs set ticket = %s where id = %s")
+    ticket_update_stmt = ("update scs2018.jobs set ticket = %s where id = %s")
     params_2 = (ticket, order_id)
 
     try:
@@ -274,7 +277,7 @@ def delete_order(order_id):
     #TODO: we need to check is the ticket is the same as in the db
 
     params = (order_id)
-    insert_stmt = ("delete from rsd2018.jobs where id = %s")
+    insert_stmt = ("delete from scs2018.jobs where id = %s")
 
     con = mysql.connect()
     cur = con.cursor()
@@ -294,4 +297,7 @@ def delete_order(order_id):
     return jsonify({'deleted': order_id})
 
 if __name__ == '__main__':
-    app.run()
+    # Dev mode (localhost:5000)
+    #app.run()
+    # Export mode
+    app.run(host = _ip_adrr, port=5005)

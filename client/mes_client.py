@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import mes_api
+import sys
 
 
 # Robot System Design 2018 - SDU
@@ -11,11 +12,15 @@ print "##################################"
 print "##  WORKCELL #3 ONLINE MANAGER  ##"
 print "################################## \n"
 
+_ip_addrr = str(sys.argv)
+print "Server's IP address: " + _ip_addrr
+
 # Define url and paths
-_url = 'http://localhost:5000'
+_url = 'http://' + _ip_addrr + ':5005'
 _log = '/log'
 _orders = '/orders'
 _events = '/event_types'
+_host = 'localhost'
 
 # Define global variables
 cell_id = 3
@@ -86,7 +91,7 @@ while True:
             print "PUT request " + _url + _orders + " succesful"
             mes_api.get_time(r.status_code)
 
-            ticket = mes_api.get_ticket(_id)
+            ticket = mes_api.get_ticket(_id, _host)
            
             print "Order " + str(_id) + " ticket: " + str(ticket) + "\n"
 
