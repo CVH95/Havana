@@ -6,17 +6,18 @@ import sys
 
 # Robot System Design 2018 - SDU
 # REST API Client of the project's MES System
-# Group 3: Carlos, Caroline, Daniel.
+# @CarlosViescasHuerta.
 
 print "##################################"
 print "##  WORKCELL #3 ONLINE MANAGER  ##"
 print "################################## \n"
 
-_ip_addrr = str(sys.argv)
+_arg = sys.argv[1]
+_ip_addrr = str(_arg)
 print "Server's IP address: " + _ip_addrr
 
 # Define url and paths
-_url = 'http://' + _ip_addrr + ':5005'
+_url = 'http://' + _ip_addrr + ':5000'
 _log = '/log'
 _orders = '/orders'
 _events = '/event_types'

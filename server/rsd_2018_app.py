@@ -9,8 +9,9 @@ import sys
 
 mysql = MySQL()
 
-_ip_adrr = str(sys.argv)
-print "Server's IP address: " + _ip_adrr
+_arg = sys.argv[1]
+_ip_addrr = str(_arg)
+print ("Server's IP address: " + _ip_addrr)
 
 class FlaskApp(Flask):
     def __init__(self, *args, **kwargs):
@@ -300,4 +301,5 @@ if __name__ == '__main__':
     # Dev mode (localhost:5000)
     #app.run()
     # Export mode
-    app.run(host = _ip_adrr, port=5005)
+    app.debug = True
+    app.run(host = _ip_addrr, port=5000)
