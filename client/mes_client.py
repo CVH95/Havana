@@ -21,6 +21,7 @@ _url = 'http://' + _ip_addrr + ':5000'
 _log = '/log'
 _orders = '/orders'
 _events = '/event_types'
+_ticket = '/ticket'
 _host = 'localhost'
 
 # Define global variables
@@ -92,9 +93,17 @@ while True:
             print ("PUT request " + _url + _orders + " succesful")
             mes_api.get_time(r.status_code)
 
-            ticket = mes_api.get_ticket(_id, _host)
-           
-            print ("Order " + str(_id) + " ticket: " + str(ticket) + "\n")
+            # GET ticket request
+            r77 = mes_api.get_ticket(_id, _url, _ticket, _orders)
+            if r77.status_code != 200:
+                print ("Raised API Error on PUT request. Status code " + str(r77.status_code))
+                ticket = "unknown"
+            else:
+                print ("GET request " + _url + _orders + str(_id) + _ticket " succesful")
+                mes_api.get_time(r77.status_code)
+                jsonTKT = r77.json()
+                ticket = jsonTKT['order']['ticket']
+                print ("Order " + str(_id) + " ticket: " + str(ticket) + "\n")
 
             # Call GET method to see 
             r2 = mes_api.get_single(_url, _orders, _id)
@@ -106,7 +115,7 @@ while True:
 
                 # Call POST method to add new log entry on Order_Start
                 _idstr = str(_id)
-                cmnt = str(ticket)
+                cmnt = _idstr + ": " + str(ticket)
                 r3 = mes_api.post_log(_url, _log, cell_id, cmnt, events_dict[7])
                 if r3.status_code != 200:
                     print ("Raised API Error on POST request. Status code " + str(r3.status_code))

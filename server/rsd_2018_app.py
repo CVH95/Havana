@@ -269,6 +269,16 @@ def update_order(order_id):
 
     return jsonify({'ticket': ticket})
 
+@app.route('/orders/<int:order_id>/ticket', methods=['GET'])
+def return_ticket(order_id):
+    r = []
+    params = (order_id)
+    cur = mysql.connect().cursor()
+    cur.execute(("select id, ticket from scs2018.jobs where id = %s"),params)
+    row = cur.fetchone()
+    r.append({'id':row[0], 'ticket':row[1]})
+    return jsonify({'order': r})
+
 @app.route('/orders/<int:order_id>', methods=['DELETE'])
 def delete_order(order_id):
     #if not request.json:

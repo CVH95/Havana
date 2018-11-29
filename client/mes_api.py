@@ -36,27 +36,35 @@ def put_order(_url, path, x):
 def die(secs):
     time.sleep(secs)
 
-# Get ticket from database
-def get_ticket(_id, hoost):
-    # Connect to database
-    conn = pymysql.connect(host=hoost,
-                           user='scs',
-                           password='scs2018',
-                           db='scs2018',
-                           charset='utf8',
-                           cursorclass=pymysql.cursors.DictCursor)
-    
-    try:
-        with conn.cursor() as cursor:
+def get_ticket(_id, _url, _ticket, _orders):
+    _ids = '/' + str(_id)
+    t_url = _url + _orders + _ids + _ticket
+    return requests.get(t_url)
+
+
+############################################################################################
+# OLD FUNCTION Get ticket from database
+#def get_ticket(_id, hoost):
+#    # Connect to database
+#    conn = pymysql.connect(host=hoost,
+#                           user='scs',
+#                           password='scs2018',
+#                           db='scs2018',
+#                           charset='utf8',
+#                           cursorclass=pymysql.cursors.DictCursor)
+#    
+#    try:
+#        with conn.cursor() as cursor:
             # Select ticket 
-            select_stmt = "select id, ticket from scs2018.jobs where id = %s"
-            cursor.execute(select_stmt, _id)
-            result = cursor.fetchone()
-    finally:
+#            select_stmt = "select id, ticket from scs2018.jobs where id = %s"
+#            cursor.execute(select_stmt, _id)
+#            result = cursor.fetchone()
+#    finally:
             # Close connection
-        conn.close()
+#        conn.close()
     
-    return result
+#    return result
+############################################################################################
 
 # Log system state (POST)
 def post_log(_url, path, cid, cmnt, evt):
