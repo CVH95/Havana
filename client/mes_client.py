@@ -99,10 +99,10 @@ while True:
                 print ("Raised API Error on PUT request. Status code " + str(r77.status_code))
                 ticket = "unknown"
             else:
-                print ("GET request " + _url + _orders + str(_id) + _ticket " succesful")
+                print ("GET request " + _url + _orders + "/" + str(_id) + _ticket + " succesful")
                 mes_api.get_time(r77.status_code)
                 jsonTKT = r77.json()
-                ticket = jsonTKT['order']['ticket']
+                ticket = jsonTKT['order'][0]['ticket']
                 print ("Order " + str(_id) + " ticket: " + str(ticket) + "\n")
 
             # Call GET method to see 
