@@ -8,13 +8,13 @@ import sys
 # REST API Client of the project's MES System
 # @CarlosViescasHuerta.
 
-print "##################################"
-print "##  WORKCELL #3 ONLINE MANAGER  ##"
-print "################################## \n"
+print ("##################################")
+print ("##  WORKCELL #3 ONLINE MANAGER  ##")
+print ("################################## \n")
 
 _arg = sys.argv[1]
 _ip_addrr = str(_arg)
-print "Server's IP address: " + _ip_addrr
+print ("Server's IP address: " + _ip_addrr)
 
 # Define url and paths
 _url = 'http://' + _ip_addrr + ':5000'
@@ -31,7 +31,7 @@ events_dict = {0:'PML_Idle', 1:'PML_Execute', 2:'PML_Complete', 3:'PML_Held', 4:
 
 while True:
 
-    print "Connecting to server on " + _url + " and waiting for new jobs \n"
+    print ("Connecting to server on " + _url + " and waiting for new jobs \n")
     
     ##################################################################
     # 1. SEE ORDERS -- Call GET method to see list of available jobs #
@@ -39,9 +39,9 @@ while True:
     
     resp = mes_api.get_orders(_url, _orders)
     if resp.status_code != 200:
-        print "Raised API Error on GET request. Status code " + str(resp.status_code)
+        print ("Raised API Error on GET request. Status code " + str(resp.status_code))
     else:
-        print "GET request " + _url + _orders + " succesful"
+        print ("GET request " + _url + _orders + " succesful")
         mes_api.get_time(resp.status_code) 
 
         # Create JSON object
@@ -57,13 +57,13 @@ while True:
                 _id = jsonObj['orders'][i]['id']
                 # Array that will be sent to the PLC
                 _plc = [jsonObj['orders'][i]['blue'], jsonObj['orders'][i]['red'], jsonObj['orders'][i]['yellow'], _id]
-                print "Taking order #" + str(_id)
-                print "Updated order with id: " + str(_id)
-                print "Preparing LEGO bricks:"
-                print "  >> Blue: " + str(jsonObj['orders'][i]['blue'])
-                print "  >> Red: " + str(jsonObj['orders'][i]['red'])
-                print "  >> Yellow: " + str(jsonObj['orders'][i]['yellow'])
-                print "\n"
+                print ("Taking order #" + str(_id))
+                print ("Updated order with id: " + str(_id))
+                print ("Preparing LEGO bricks:")
+                print ("  >> Blue: " + str(jsonObj['orders'][i]['blue']))
+                print ("  >> Red: " + str(jsonObj['orders'][i]['red']))
+                print ("  >> Yellow: " + str(jsonObj['orders'][i]['yellow']))
+                print ("\n")
                 break
             else:
                 _id = -1
@@ -74,9 +74,9 @@ while True:
         cerr = "waiting - all orders taken"
         rerr = mes_api.post_log(_url, _log, cell_id, cerr, events_dict[0])
         if rerr.status_code != 200:
-            print "Raised API Error on POST request. Status code " + str(rerr.status_code) + "\n"
+            print ("Raised API Error on POST request. Status code " + str(rerr.status_code) + "\n")
         else:
-            print "POST request indicating No-Order status to" + _url + " succesful"
+            print ("POST request indicating No-Order status to" + _url + " succesful")
             mes_api.get_time(rerr.status_code)
             mes_api.die(8)
 
@@ -87,21 +87,21 @@ while True:
 
         r = mes_api.put_order(_url, _orders, _id)
         if r.status_code != 200:
-            print "Raised API Error on PUT request. Status code " + str(r.status_code)
+            print ("Raised API Error on PUT request. Status code " + str(r.status_code))
         else:
-            print "PUT request " + _url + _orders + " succesful"
+            print ("PUT request " + _url + _orders + " succesful")
             mes_api.get_time(r.status_code)
 
             ticket = mes_api.get_ticket(_id, _host)
            
-            print "Order " + str(_id) + " ticket: " + str(ticket) + "\n"
+            print ("Order " + str(_id) + " ticket: " + str(ticket) + "\n")
 
             # Call GET method to see 
             r2 = mes_api.get_single(_url, _orders, _id)
             if r2.status_code != 200:
-                print "Raised API Error on GET. Status code " + str(r2.status_code)
+                print ("Raised API Error on GET. Status code " + str(r2.status_code))
             else:
-                print "GET request " + _url + _orders + " succesful"
+                print ("GET request " + _url + _orders + " succesful")
                 mes_api.get_time(r2.status_code)
 
                 # Call POST method to add new log entry on Order_Start
@@ -109,16 +109,16 @@ while True:
                 cmnt = str(ticket)
                 r3 = mes_api.post_log(_url, _log, cell_id, cmnt, events_dict[7])
                 if r3.status_code != 200:
-                    print "Raised API Error on POST request. Status code " + str(r3.status_code)
+                    print ("Raised API Error on POST request. Status code " + str(r3.status_code))
                 else:
-                    print "POST request " + _url + _orders + " succesful"
+                    print ("POST request " + _url + _orders + " succesful")
                     mes_api.get_time(r3.status_code)
 
 
             #####     Order processing      #####
-            print "Processing order..."
-            mes_api.die(5)
-            mes_api.plc_control(_plc, events_dict, _url, _log, cell_id, cmnt)
+            print ("Processing order...")
+            mes_api.die(15)
+            #mes_api.plc_control(_plc, events_dict, _url, _log, cell_id, cmnt)
 
 
             ##### PackML related code here  #####
@@ -129,19 +129,19 @@ while True:
             ##########################################################################
             resp = mes_api.delete_order(_url, _orders, _id)
             if resp.status_code != 200:
-                print "Raised API Error on DELETE request. Status code " + str(resp.status_code)
+                print ("Raised API Error on DELETE request. Status code " + str(resp.status_code))
             else:
-                print "DELETE request " + _url + _orders + " succesful"
+                print ("DELETE request " + _url + _orders + " succesful")
                 mes_api.get_time(resp.status_code) 
 
                 # Log entry indicating deletion of the complete order
                 r4 = mes_api.post_log(_url, _log, cell_id, cmnt, events_dict[8])
                 if r4.status_code != 200:
-                    print "Raised API Error on POST request. Status code " + str(r4.status_code)
+                    print ("Raised API Error on POST request. Status code " + str(r4.status_code))
                 else:
-                    print "POST request " + _url + _orders + " succesful"
+                    print ("POST request " + _url + _orders + " succesful")
                     mes_api.get_time(r4.status_code)
-                    print "\n"
+                    print ("\n")
 
 
 # Never ending loop

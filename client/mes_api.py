@@ -13,7 +13,7 @@ import sys
 
 # Print current timestamp
 def get_time(stcode):
-    print "On " + time.strftime("%c") + " - Status code = " + str(stcode) + "\n"
+    print ("On " + time.strftime("%c") + " - Status code = " + str(stcode) + "\n")
 
 # Get order list (GET)
 def get_orders(_url, path):
@@ -61,10 +61,10 @@ def get_ticket(_id, hoost):
 # Log system state (POST)
 def post_log(_url, path, cid, cmnt, evt):
     log = {"cell_id": cid, "comment": cmnt, "event": evt}
-    print "Posted new log entry:"
-    print "  >> cell_id: " + str(cid)
-    print "  >> event: " + evt
-    print "  >> cmnt: " + cmnt
+    print ("Posted new log entry:")
+    print ("  >> cell_id: " + str(cid))
+    print ("  >> event: " + evt)
+    print ("  >> cmnt: " + cmnt)
     pst_url = _url + path
     return requests.post(pst_url, json=log)
 
@@ -81,12 +81,12 @@ def plc_control(_plc, events, _url, _path, cid, cmt):
     server_address = ('localhost', 30000)
     sock.connect(server_address)
 
-    print "Connected to PLC's Server in http://" + server_address[0] + ":" + str(server_address[1]) + "/"
+    print ("Connected to PLC's Server in http://" + server_address[0] + ":" + str(server_address[1]) + "/")
 
     data = str(_plc)
 
     sock.send(data)
-    print "Sent order to PLC"
+    print ("Sent order to PLC")
 
     while True:
         rcpt = sock.recv(1024)
@@ -94,10 +94,10 @@ def plc_control(_plc, events, _url, _path, cid, cmt):
         if _state == 9:
             break
         else:
-            print "Server's reply:"
-            print "PackML state update: " + events[_state]
+            print ("Server's reply:")
+            print ("PackML state update: " + events[_state])
             evt = events[_state]
             post_log(_url, _path, cid, cmt, evt)
     
     sock.close()
-    print "Connection closed."
+    print ("Connection closed.")
