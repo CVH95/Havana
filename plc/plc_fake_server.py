@@ -52,6 +52,6 @@ while (True):
         i = 0
         _eoc = str(eoc)
         c.send(_eoc)
-        break
+        #break
 
 print "Server shut down"

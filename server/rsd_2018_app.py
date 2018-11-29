@@ -1,6 +1,11 @@
+# Server from Robot System Design Course
+
+# Import Flask modules
 from flask import Flask, jsonify
 from flask import make_response, abort, request
 from flaskext.mysql import MySQL
+
+# Import System Modules
 import uuid
 import threading
 import time
