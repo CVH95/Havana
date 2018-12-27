@@ -4,9 +4,14 @@
 # Ignore virtual environment stuff
 server/venv/
 
+# Ignore client_Ubuntu
+client_Ubuntu/
+
 # Ignore pychaches
 server/__pycache__/
-client/__pycache__/
+client_RPi/__pycache__/
+client_Ubuntu/__pycache__/
 
 # Ignore pyc
-client/mes_api.pyc
+client_RPi/mes_api.pyc
+client_Ubuntu/mes_api.pyc
