@@ -1,19 +1,13 @@
 #!/usr/bin/python
 
-# REAL PLC:
-    # Select library tcpIp
-    # Download TCP/IP License: Licenses - Manage licenses - tcpIp - 7 days
-    # Import modules of the library into the program
-    # Connect to PLC remote desktop and install package tf6310 tcpIp or something like that is called
-
 import socket
 import sys
 import random
 import time
 
-#_ip = str(sys.argv[1])
-_ip = 'localhost'
-_port = 30000
+_ip = str(sys.argv[1])
+#_ip = 'localhost'
+_port = 3000
 
 print ("PLC running TCP/IP Server on http://" + _ip + ":" + str(_port) + "/")
 
@@ -34,20 +28,22 @@ while (True):
             # 3: order id
     
     _order = c.recv(1024)
-    order = _order.decode()
+    hhh = _order.decode()
+    order = str(hhh)
+    l1 = len(order)
 
-    if str(order) == 'hi':
-        print ("Received hello message: " + str(_order))
+    if order == 'hi':
+        print ("Received hello message: " + order)
         msn = 'new'
         m = msn.encode()
         c.send(m)
         print ("Sent: " + msn)
 
-    else:
+    elif l1 == 7 and int(order[1]) <= 4 and int(order[3]) <= 3 and int(order[5]) <= 2:
         
         # 2. Robot starts working. PackML sends state updates to MES system via socket (Here, random states are sent).
 
-        print ("Order: " + str(order))
+        print("Order: " + order + "  |  Length = " + str(l1))
         msn = 'ok'
         z = msn.encode()
         c.send(z)
@@ -73,3 +69,7 @@ while (True):
         e = _eoc.encode()
         c.send(e)
         print ("Back to start \n \n")
+
+    else:
+        print("Received unknown message:")
+        print("Message: " + order + "  |  Length = " + str(l1))

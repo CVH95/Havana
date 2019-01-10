@@ -14,8 +14,11 @@ print ("##  WORKCELL #3 ONLINE MANAGER  ##")
 print ("################################## \n")
 
 _arg = sys.argv[1]
+_arg2 = sys.argv[2]
 _ip_addrr = str(_arg)
-print ("Server's IP address: " + _ip_addrr)
+_plc_addrr = str(_arg2)
+print ("MES server's IP address: " + _ip_addrr)
+print ("PLC server's IP address: " + _plc_addrr)
 
 # Define url and paths
 _url = 'http://' + _ip_addrr + ':5000'
@@ -23,7 +26,7 @@ _log = '/log'
 _orders = '/orders'
 _events = '/event_types'
 _ticket = '/ticket'
-_host = 'localhost'
+#_host = 'localhost'
 
 # Define global variables
 cell_id = 3
@@ -33,7 +36,7 @@ events_dict = {0:'PML_Idle', 1:'PML_Execute', 2:'PML_Complete', 3:'PML_Held', 4:
 
 # Create a TCP/IP socket client connected to PLC's server
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('localhost', 30000)
+server_address = (_plc_addrr, 3000)
 sock.connect(server_address)
 
 print ("Connected to PLC's Server in http://" + server_address[0] + ":" + str(server_address[1]) + "/")
