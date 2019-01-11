@@ -3,6 +3,7 @@
 
 # Ignore virtual environment stuff
 server/venv/
+attacks/venv/
 plc/test.py
 
 # Ignore client_Ubuntu
