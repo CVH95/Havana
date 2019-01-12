@@ -39,7 +39,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = (_plc_addrr, 3000)
 sock.connect(server_address)
 
-print ("Connected to PLC's Server in http://" + server_address[0] + ":" + str(server_address[1]) + "/")
+print ("Connected to PLC's Server in http://" + server_address[0] + ":3000/")
 
 while True:
 

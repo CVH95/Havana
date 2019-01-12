@@ -17,3 +17,6 @@ client_Ubuntu/__pycache__/
 # Ignore pyc
 client_RPi/mes_api.pyc
 client_Ubuntu/mes_api.pyc
+
+# Ignore video
+video/

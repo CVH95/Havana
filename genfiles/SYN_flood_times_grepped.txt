@@ -1,0 +1,52 @@
+Response time = 0.180959701538 ms.
+Response time = 0.133991241455 ms.
+Response time = 43.1761741638 ms.
+Response time = 1413.61522675 ms.
+
+Response time = 0.0159740447998 ms.
+Response time = 0.200986862183 ms.
+Response time = 40.3552055359 ms.
+Response time = 1385.60891151 ms.
+
+Response time = 0.140905380249 ms.
+Response time = 0.128984451294 ms.
+Response time = 41.2797927856 ms.
+Response time = 1413.31791878 ms.
+
+Response time = 0.141143798828 ms.
+Response time = 0.0898838043213 ms.
+Response time = 43.8940525055 ms.
+Response time = 1402.22501755 ms.
+
+Response time = 0.190019607544 ms.
+Response time = 0.102996826172 ms.
+Response time = 40.139913559 ms.
+Response time = 1412.80388832 ms.
+
+Response time = 0.123023986816 ms.
+Response time = 0.159025192261 ms.
+Response time = 43.0619716644 ms.
+Response time = 1402.20403671 ms.
+
+===============================================================================
+
+Response time = 0.173091888428 ms.
+Response time = 0.181913375854 ms.
+Response time = 42.368888855 ms.
+Response time = 1404.49500084 ms.
+
+Response time = 0.163078308105 ms.
+Response time = 0.123023986816 ms.
+Response time = 42.9120063782 ms.
+Response time = 1403.05614471 ms.
+
+Response time = 0.205993652344 ms.
+Response time = 0.158786773682 ms.
+Response time = 40.4050350189 ms.
+Response time = 1400.82502365 ms.
+
+Response time = 0.212907791138 ms.
+Response time = 0.1540184021 ms.
+Response time = 42.5698757172 ms.
+Response time = 1414.46709633 ms.
+

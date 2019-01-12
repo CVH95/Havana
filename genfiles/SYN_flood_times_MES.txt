@@ -1,0 +1,36 @@
+$ python GET_time.py 192.168.1.100 5000
+
+GET request to http://192.168.1.100:5000
+Response time = 19.3519592285 ms.
+
+$ python GET_time.py 192.168.1.100 5000
+
+GET request to http://192.168.1.100:5000
+Response time = 21.2469100952 ms.
+
+
+$ python GET_time.py 192.168.1.100 5000
+
+GET request to http://192.168.1.100:5000
+Response time = 20.5049514771 ms.
+
+====================================================================
+
+$ python GET_time.py 192.168.1.100 5000
+
+GET request to http://192.168.1.100:5000
+Response time = 21.9659805298 ms.
+
+$ python GET_time.py 192.168.1.100 5000
+GET request to http://192.168.1.100:5000
+Response time = 22.6318836212 ms.
+
+$ python GET_time.py 192.168.1.100 5000
+GET request to http://192.168.1.100:5000
+Response time = 22.8581428528 ms.
+
+$ python GET_time.py 192.168.1.100 5000
+
+GET request to http://192.168.1.100:5000
+Response time = 21.9581127167 ms.
+

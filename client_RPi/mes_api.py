@@ -92,9 +92,13 @@ def plc_control(sock, _plc, events, _url, _path, cid, cmt):
     print ("Sent hello message.")
 
     while True:
+        ti = time.time()
         rec = sock.recv(1024)
+        tf = time.time()
+        tel = (tf-ti)*1000
         if str(rec.decode()) == 'new':
             print ("Received 'new' request. Preparing order to be sent.")
+            print ("Response time = " + str(tel) + " ms.")
             break
         else:
             print ("Received the following message: " + str(rec.decode()))
@@ -107,22 +111,31 @@ def plc_control(sock, _plc, events, _url, _path, cid, cmt):
     print ("Sent order to PLC: " + data_raw)
 
     while True:
+        ti1 = time.time()
         rs = sock.recv(1024)
+        tf1 = time.time()
+        tel1 = (tf1-ti1)*1000
         if rs != None:
             rst = rs.decode()
             print ("Server's reply: " + str(rst))
             if str(rst) == 'ok':
                 print ("Server received the order, now waiting for updates...")
+                print ("Response time = " + str(tel1) + " ms.")
                 while True:
+                    ti2 = time.time()
                     rcpt = sock.recv(1024)
+                    tf2 = time.time()
+                    tel2 = (tf2-ti2)*1000
                     _state = int(rcpt)
                     if _state == 2:
                         print ("Server's reply:")
                         print ("PackML state update: " + events[_state])
+                        print ("Response time = " + str(tel2) + " ms.")
                         break
                     else:
                         print ("Server's reply:")
                         print ("PackML state update: " + events[_state])
+                        print ("Response time = " + str(tel2) + " ms.")
                         evt = events[_state]
                         post_log(_url, _path, cid, cmt, evt)
                     break
@@ -130,6 +143,7 @@ def plc_control(sock, _plc, events, _url, _path, cid, cmt):
             else:
                 print ("Server's reply: " + str(rst))
                 print ("An error ocurred while processing the order")
+                print ("Response time = " + str(tel1) + " ms.")
                 break
         
         else:

@@ -1,0 +1,641 @@
+$ python mes_client.py 192.168.1.100 192.168.1.100
+
+##################################
+##  WORKCELL #3 ONLINE MANAGER  ##
+################################## 
+
+MES server's IP address: 192.168.1.100
+PLC server's IP address: 192.168.1.100
+Connected to PLC's Server in http://192.168.1.100:3000/
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:06 2019 - Status code = 200
+
+Taking order #145
+Updated order with id: 145
+Preparing LEGO bricks:
+  >> Blue: 2
+  >> Red: 4
+  >> Yellow: 2
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:06 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/145/ticket succesful
+On Sat Jan 12 19:06:06 2019 - Status code = 200
+
+Order 145 ticket: 789C61
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:06 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 145: 789C61
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:06 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received 'new' request. Preparing order to be sent.
+Response time = 0.0998973846436 ms.
+Sent order to PLC: (2,4,2)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.109910964966 ms.
+Server's reply:
+PackML state update: PML_Stopped
+Response time = 41.9619083405 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Stopped
+  >> cmnt: 145: 789C61
+Server's reply: 0
+Server's reply: 0
+An error ocurred while processing the order
+Response time = 1413.29622269 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:08 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 145: 789C61
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:08 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:13 2019 - Status code = 200
+
+Taking order #146
+Updated order with id: 146
+Preparing LEGO bricks:
+  >> Blue: 2
+  >> Red: 1
+  >> Yellow: 2
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:13 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/146/ticket succesful
+On Sat Jan 12 19:06:13 2019 - Status code = 200
+
+Order 146 ticket: C96881
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:13 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 146: C96881
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:13 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 2
+Received 'new' request. Preparing order to be sent.
+Response time = 0.130891799927 ms.
+Sent order to PLC: (2,1,2)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.046968460083 ms.
+Server's reply:
+PackML state update: PML_Stopped
+Response time = 40.3869152069 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Stopped
+  >> cmnt: 146: C96881
+Server's reply: 0
+Server's reply: 0
+An error ocurred while processing the order
+Response time = 1413.07401657 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:15 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 146: C96881
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:15 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:20 2019 - Status code = 200
+
+Taking order #147
+Updated order with id: 147
+Preparing LEGO bricks:
+  >> Blue: 1
+  >> Red: 3
+  >> Yellow: 2
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:20 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/147/ticket succesful
+On Sat Jan 12 19:06:20 2019 - Status code = 200
+
+Order 147 ticket: 4EAEC2
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:20 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 147: 4EAEC2
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:20 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 2
+Received 'new' request. Preparing order to be sent.
+Response time = 0.204086303711 ms.
+Sent order to PLC: (1,3,2)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.1380443573 ms.
+Server's reply:
+PackML state update: PML_Stopped
+Response time = 42.2759056091 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Stopped
+  >> cmnt: 147: 4EAEC2
+Server's reply: 4
+Server's reply: 4
+An error ocurred while processing the order
+Response time = 1413.27500343 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:21 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 147: 4EAEC2
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:22 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:27 2019 - Status code = 200
+
+Taking order #148
+Updated order with id: 148
+Preparing LEGO bricks:
+  >> Blue: 2
+  >> Red: 4
+  >> Yellow: 2
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:27 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/148/ticket succesful
+On Sat Jan 12 19:06:27 2019 - Status code = 200
+
+Order 148 ticket: 0BB6BD
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:27 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 148: 0BB6BD
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:27 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 162
+Received 'new' request. Preparing order to be sent.
+Response time = 0.0958442687988 ms.
+Sent order to PLC: (2,4,2)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.0350475311279 ms.
+Server's reply:
+PackML state update: PML_Suspended
+Response time = 41.8329238892 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Suspended
+  >> cmnt: 148: 0BB6BD
+Server's reply: 3
+Server's reply: 3
+An error ocurred while processing the order
+Response time = 1413.17009926 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:28 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 148: 0BB6BD
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:28 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:33 2019 - Status code = 200
+
+Taking order #149
+Updated order with id: 149
+Preparing LEGO bricks:
+  >> Blue: 1
+  >> Red: 1
+  >> Yellow: 0
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:33 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/149/ticket succesful
+On Sat Jan 12 19:06:33 2019 - Status code = 200
+
+Order 149 ticket: 067B93
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:33 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 149: 067B93
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:33 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 52
+Received 'new' request. Preparing order to be sent.
+Response time = 0.130891799927 ms.
+Sent order to PLC: (1,1,0)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.132083892822 ms.
+Server's reply:
+PackML state update: PML_Suspended
+Response time = 43.436050415 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Suspended
+  >> cmnt: 149: 067B93
+Server's reply: 6
+Server's reply: 6
+An error ocurred while processing the order
+Response time = 1413.53011131 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:35 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 149: 067B93
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:35 2019 - Status code = 200
+
+
+
+^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[D^[[DConnecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:40 2019 - Status code = 200
+
+Taking order #150
+Updated order with id: 150
+Preparing LEGO bricks:
+  >> Blue: 1
+  >> Red: 1
+  >> Yellow: 1
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:40 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/150/ticket succesful
+On Sat Jan 12 19:06:40 2019 - Status code = 200
+
+Order 150 ticket: D755AB
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:40 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 150: D755AB
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:40 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 430
+Received the following message: 5
+Received the following message: 2
+Received 'new' request. Preparing order to be sent.
+Response time = 0.0410079956055 ms.
+Sent order to PLC: (1,1,1)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.1540184021 ms.
+Server's reply:
+PackML state update: PML_Stopped
+Response time = 41.2797927856 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Stopped
+  >> cmnt: 150: D755AB
+Server's reply: 4
+Server's reply: 4
+An error ocurred while processing the order
+Response time = 1409.41810608 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:44 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 150: D755AB
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:44 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:49 2019 - Status code = 200
+
+Taking order #151
+Updated order with id: 151
+Preparing LEGO bricks:
+  >> Blue: 1
+  >> Red: 4
+  >> Yellow: 2
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:49 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/151/ticket succesful
+On Sat Jan 12 19:06:49 2019 - Status code = 200
+
+Order 151 ticket: 02968B
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:49 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 151: 02968B
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:49 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 664
+Received the following message: 4
+Received the following message: 2
+Received 'new' request. Preparing order to be sent.
+Response time = 0.00596046447754 ms.
+Sent order to PLC: (1,4,2)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.12993812561 ms.
+Server's reply:
+PackML state update: PML_Aborted
+Response time = 40.3621196747 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Aborted
+  >> cmnt: 151: 02968B
+Server's reply: 5
+Server's reply: 5
+An error ocurred while processing the order
+Response time = 1416.99695587 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:53 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 151: 02968B
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:53 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:58 2019 - Status code = 200
+
+Taking order #152
+Updated order with id: 152
+Preparing LEGO bricks:
+  >> Blue: 3
+  >> Red: 4
+  >> Yellow: 0
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:58 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/152/ticket succesful
+On Sat Jan 12 19:06:58 2019 - Status code = 200
+
+Order 152 ticket: 1E7828
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:58 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 152: 1E7828
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:06:58 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 2
+Received 'new' request. Preparing order to be sent.
+Response time = 0.146150588989 ms.
+Sent order to PLC: (3,4,0)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.0979900360107 ms.
+Server's reply:
+PackML state update: PML_Execute
+Response time = 41.6309833527 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Execute
+  >> cmnt: 152: 1E7828
+Server's reply: 3
+Server's reply: 3
+An error ocurred while processing the order
+Response time = 1412.02998161 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:00 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 152: 1E7828
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:00 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:05 2019 - Status code = 200
+
+Taking order #153
+Updated order with id: 153
+Preparing LEGO bricks:
+  >> Blue: 2
+  >> Red: 0
+  >> Yellow: 2
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:05 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/153/ticket succesful
+On Sat Jan 12 19:07:05 2019 - Status code = 200
+
+Order 153 ticket: 08EE58
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:05 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 153: 08EE58
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:05 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 2
+Received 'new' request. Preparing order to be sent.
+Response time = 0.0679492950439 ms.
+Sent order to PLC: (2,0,2)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.0288486480713 ms.
+Server's reply:
+PackML state update: PML_Idle
+Response time = 44.4929599762 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Idle
+  >> cmnt: 153: 08EE58
+Server's reply: 5
+Server's reply: 5
+An error ocurred while processing the order
+Response time = 1411.44394875 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:07 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 153: 08EE58
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:07 2019 - Status code = 200
+
+
+
+Connecting to server on http://192.168.1.100:5000 and waiting for new jobs 
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:12 2019 - Status code = 200
+
+Taking order #154
+Updated order with id: 154
+Preparing LEGO bricks:
+  >> Blue: 1
+  >> Red: 3
+  >> Yellow: 2
+
+
+PUT request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:12 2019 - Status code = 200
+
+GET request http://192.168.1.100:5000/orders/154/ticket succesful
+On Sat Jan 12 19:07:12 2019 - Status code = 200
+
+Order 154 ticket: C55D63
+
+GET request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:12 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Start
+  >> cmnt: 154: C55D63
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:12 2019 - Status code = 200
+
+Processing order...
+Sent hello message.
+Received the following message: 005
+Received the following message: 2
+Received 'new' request. Preparing order to be sent.
+Response time = 0.00596046447754 ms.
+Sent order to PLC: (1,3,2)
+Server's reply: ok
+Server received the order, now waiting for updates...
+Response time = 0.0269412994385 ms.
+Server's reply:
+PackML state update: PML_Execute
+Response time = 41.5000915527 ms.
+Posted new log entry:
+  >> cell_id: 3
+  >> event: PML_Execute
+  >> cmnt: 154: C55D63
+Server's reply: 4
+Server's reply: 4
+An error ocurred while processing the order
+Response time = 1402.00304985 ms.
+DELETE request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:14 2019 - Status code = 200
+
+Posted new log entry:
+  >> cell_id: 3
+  >> event: Order_Done
+  >> cmnt: 154: C55D63
+POST request http://192.168.1.100:5000/orders succesful
+On Sat Jan 12 19:07:14 2019 - Status code = 200
+

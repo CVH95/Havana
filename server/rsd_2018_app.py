@@ -313,8 +313,9 @@ def delete_order(order_id):
     return jsonify({'deleted': order_id})
 
 if __name__ == '__main__':
-    # Dev mode (localhost:5000)
-    #app.run()
-    # Export mode
-    app.debug = True
-    app.run(host = _ip_addrr, port=5000)
+    try:
+        app.debug = True
+        app.run(host = _ip_addrr, port=5000)
+    except KeyboardInterrupt:
+        print ("\n \n \n \n \n \n \n \n \n \n \n")
+        print ("Server shut down.")

